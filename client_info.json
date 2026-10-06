@@ -1,0 +1,168 @@
+{
+  "business": {
+    "name": "RDV - Renuka Designers Villa",
+    "shortName": "RDV",
+    "gstin": "27AVPPT8792E1ZN",
+    "associatedFirms": [
+      "Smita Disposable And Plastics"
+    ],
+    "tagline": "Complete Food Packaging, Eco Tableware, Hotel Amenities & Housekeeping Solutions",
+    "description": "Central India's one-stop manufacturer & wholesale distributor for restaurants, hotels, bakeries, banquets, and caterers. Official partner of CHUK India, offering bagasse tableware, commercial food containers, customized paper packaging, hotel amenities, and housekeeping supplies.",
+    "affiliations": [
+      "Authorized Partner & Distributor of CHUK (Pakka Ltd.)"
+    ],
+    "weCaterTo": [
+      "Restaurants",
+      "Hotels",
+      "Banquets",
+      "Caterers",
+      "Guest Houses",
+      "Fast Food Joints",
+      "Bakeries",
+      "Take Away Counters & Cloud Kitchens"
+    ]
+  },
+  "contact": {
+    "phones": [
+      "+91 8378965139",
+      "+91 9860544366",
+      "+91 9665668952"
+    ],
+    "whatsapp": "+918378965139",
+    "email": "renukadesignersvilla@gmail.com",
+    "alternateEmail": "vaibhavtamboli1989@rediffmail.com",
+    "businessHours": "Monday - Saturday: 10:00 AM - 8:00 PM (Sunday Closed)"
+  },
+  "location": {
+    "addressLine1": "23/A Dev Nagar",
+    "landmark": "Opposite Sanjay Traders Lane, Orange City Hospital Road",
+    "area": "Khamla",
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "pincode": "440015",
+    "country": "India",
+    "fullAddress": "23/A Dev Nagar, Opposite Sanjay Traders, Orange City Hospital Road, Khamla, Nagpur, Maharashtra - 440015",
+    "coordinates": {
+      "latitude": 21.11465442,
+      "longitude": 79.06713864,
+      "zoom": 17
+    },
+    "maps": {
+      "googleMapsUrl": "https://www.google.com/maps/search/Renuka%20Designers%20Villa/@21.11465442,79.06713864,17z?hl=en",
+      "embedUrl": "https://maps.google.com/maps?q=21.11465442,79.06713864&hl=en&z=17&output=embed"
+    }
+  },
+  "onlineStore": {
+    "demoOrderUrl": "https://vyaparapp.in/store/smitadisposableandplastics",
+    "platform": "Vyapar App Online Store",
+    "title": "Smita Disposable And Plastics - Live Online Store"
+  },
+  "catalogSections": [
+    {
+      "id": "bagasse-eco",
+      "title": "Eco-Friendly Bagasse & Cornstarch",
+      "description": "100% biodegradable and compostable tableware manufactured from natural sugarcane bagasse and cornstarch.",
+      "items": [
+        "CHUK Sugarcane Bagasse Plates (7\", 9\", 10\", 12\" Round & Square)",
+        "Compartment Meal Trays & Buffet Thalis (2CP, 3CP, 4CP, 5CP, 8CP)",
+        "Sugarcane Bagasse Bowls (100ml, 180ml, 250ml, 500ml)",
+        "Paper Dip Containers (40ml - 150ml)",
+        "Kraft & White Paper Boat Trays (All Regular Sizes)",
+        "Biodegradable Cornstarch Cutlery (Spoons, Forks, Knives)"
+      ]
+    },
+    {
+      "id": "containers-trays",
+      "title": "Commercial Food Containers & Meal Trays",
+      "description": "Microwave-safe, leak-resistant meal delivery tubs and compartment trays for QSRs and cloud kitchens.",
+      "items": [
+        "123 MM Dia Sealable Round Containers (Black & Transparent)",
+        "Black Round Containers with Airtight Lids",
+        "Milky White Containers with Lids",
+        "Rectangular Trays with Lid 190*140 (400ml - 1800ml)",
+        "Airtight Black Rectangular Trays (500ml - 1500ml)",
+        "RE-Series Containers (450ml - 1800ml) & Pasta Trays",
+        "RO-Series Containers (350ml - 1600ml)",
+        "Platter Trays & Tamper-Proof Containers (All Regular Shapes)",
+        "Dip Containers (25ml - 70ml)",
+        "Rectangular Hinged Clamshell Containers"
+      ]
+    },
+    {
+      "id": "paper-packaging",
+      "title": "Customized Paper Packaging & PSB Boxes",
+      "description": "Food-grade kraft and white paper containers, pizza boxes, and custom branded takeaway packaging.",
+      "items": [
+        "White & Kraft Paper Containers (40ml - 1200ml)",
+        "PSB Range Food Boxes - Brown & White (500ml - 1600ml)",
+        "Flat Bowl Paper Containers & Rippled Food Bowls (250ml - 1200ml)",
+        "Wok Boxes for Chinese & Asian Meals (500, 750, 900ml)",
+        "Custom Printed Pizza Boxes & French Fries Boxes",
+        "Burger Boxes, Kathi Roll Packaging & Sandwich Boxes",
+        "Noodles Boxes, Momos Packaging & Popcorn Boxes",
+        "Dosa / Idli Paper Buckets & Ice Cream Cups"
+      ]
+    },
+    {
+      "id": "terracotta-clay",
+      "title": "Terracotta & Traditional Earthenware",
+      "description": "Pure natural river clay kulhads, biryani handis, and matkas for authentic aroma and eco-dining.",
+      "items": [
+        "Traditional Clay Kulhads (60ml, 100ml, 150ml, 200ml, 300ml Peti)",
+        "Clay Biryani Handis with Earthen Seal Lids",
+        "Clay Matkas, Curd Pots & Designer Terracotta Pots",
+        "Decorative Diyas & Earthen Cookware"
+      ]
+    },
+    {
+      "id": "hotel-amenities",
+      "title": "Hotel & Guest Amenities",
+      "description": "Complete guest room accessories and personal care kits for luxury hotels, guest houses, and resorts.",
+      "items": [
+        "Dental Kits (Brush & Toothpaste)",
+        "Shaving Kits (Razor & Cream)",
+        "Hair Combs & Executive Coat Brushes",
+        "Wooden Hangers & Standard Hangers",
+        "Disposable Laundry & Shopping Bags",
+        "Guest Toiletries Kits (Shampoo, Lotion, Soap)",
+        "Shoe Horns & Shower Caps",
+        "Emergency Sewing Kits",
+        "Comfort Bathroom Slippers"
+      ]
+    },
+    {
+      "id": "bakery-bags",
+      "title": "Bakery, Bags, Straws & B.O.P.S Range",
+      "description": "Pastry boxes, BOPP cake bases, custom printed paper bags, straws, and crystal containers.",
+      "items": [
+        "Dry Cake Packaging & Pastry Boxes",
+        "Cake Bases & Pastry Bases (All Standard Sizes)",
+        "Paper Straws (Straight & Thick Shake Straws)",
+        "Standing Pouches, Silver Envelopes & Bread Bags",
+        "Plain & Printed Butter Papers",
+        "Custom Printed Paper Carry Bags & Non-Woven Bags",
+        "Doggy Takeaway Kraft Bags",
+        "Muffins Cups, Chocolate & Ladoo Cups",
+        "Dry Fruit Packaging & PVC/PET Cookie Jars",
+        "Food Grade Cling Films & Sealing Rolls",
+        "Manual & Semi-Automatic Tray Sealing Machines"
+      ]
+    },
+    {
+      "id": "housekeeping-cleaning",
+      "title": "Housekeeping & Cleaning Materials",
+      "description": "Commercial-grade hygiene, janitorial supplies, and cleaning chemicals for hotels and restaurants.",
+      "items": [
+        "Hand Gloves (Latex & Nitrile) & Chef Caps",
+        "Bamboo Skewers, Satay Sticks & Wooden Toothpicks",
+        "Garbage Bags (All Sizes) & Zip Lock Pouches",
+        "Steel Scrubber Juna & Plastic Scrubbers",
+        "M-Fold, C-Fold Napkins & Paper Tissue Rolls",
+        "Kitchen Towel Rolls & POS Thermal Billing Rolls",
+        "Phenyl, Toilet Cleaner & Glass Cleaner",
+        "Wet Mops, Dry Mops, Cotton Dusters & Floor Wipers",
+        "Tea Light Candles & Commercial Umbrellas"
+      ]
+    }
+  ]
+}
