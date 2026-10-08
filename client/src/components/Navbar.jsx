@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logoNavbar from '../assets/rdv-logo-navbar.png';
 
-export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
+export default function Navbar({ onOpenSampleKit, onSelectCategory, onNavigatePage, currentPage = 'home' }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [expandedGroup, setExpandedGroup] = useState(null);
@@ -53,15 +53,31 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
     setExpandedGroup((prev) => (prev === groupName ? null : groupName));
   };
 
-  const handleNavigate = (targetId) => {
+  const handleBrandLogoClick = (e) => {
+    e.preventDefault();
     setMenuOpen(false);
-    if (!targetId) return;
+    if (onNavigatePage) {
+      onNavigatePage('home');
+    } else {
+      window.location.hash = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
-    if (targetId.startsWith('#')) {
-      const el = document.querySelector(targetId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+  const handlePageNavigation = (pageId, sectionAnchor = null) => {
+    setMenuOpen(false);
+    if (onNavigatePage) {
+      onNavigatePage(pageId);
+    }
+    if (sectionAnchor) {
+      setTimeout(() => {
+        const el = document.querySelector(sectionAnchor);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -70,17 +86,24 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
     if (onSelectCategory) {
       onSelectCategory(categoryId);
     }
-    const catalogEl = document.querySelector('#products');
-    if (catalogEl) {
-      catalogEl.scrollIntoView({ behavior: 'smooth' });
+    if (onNavigatePage) {
+      onNavigatePage('products');
+    } else {
+      window.location.hash = '#/products';
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <header className={`main-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-wrapper">
-        {/* Brand Logo */}
-        <a href="#" className="brand-logo-link" aria-label="Renuka Designers Villa Home">
+        {/* Brand Logo (Exact Clean Previous Visual) */}
+        <a 
+          href="#" 
+          className="brand-logo-link" 
+          aria-label="Renuka Designers Villa Home"
+          onClick={handleBrandLogoClick}
+        >
           <img 
             src={logoNavbar} 
             alt="Renuka Designers Villa Logo" 
@@ -88,13 +111,13 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
           />
         </a>
 
-        {/* Right Action Icons & Menu Button */}
+        {/* Right Action Icons & Menu Button (Exact Clean Previous Visual) */}
         <div className="header-actions">
           {/* 1. Instagram Logo */}
           <a 
             href="https://www.instagram.com/renukadesignersvilla" 
             target="_blank" 
-            rel="noopener noreferrer"
+            rel="noopener noreferrer" 
             className="header-icon-btn instagram-icon"
             title="Follow us on Instagram"
             aria-label="Instagram"
@@ -120,7 +143,7 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
           <a 
             href="https://wa.me/918378965139?text=Hello%20Renuka%20Designers%20Villa%2C%20I%20would%20like%20to%20inquire%20about%20your%20compostable%20tableware."
             target="_blank" 
-            rel="noopener noreferrer"
+            rel="noopener noreferrer" 
             className="header-icon-btn whatsapp-icon"
             title="Chat with WhatsApp Desk"
             aria-label="Chat on WhatsApp"
@@ -133,7 +156,7 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
           {/* 4. Menu Toggle Button (Hamburger ☰ when closed, Close ✕ when open) */}
           <button 
             ref={toggleBtnRef}
-            type="button"
+            type="button" 
             className={`header-menu-toggle-btn ${menuOpen ? 'active' : ''}`}
             onClick={toggleMenu}
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -155,7 +178,7 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
           </button>
         </div>
 
-        {/* Dropdown Menu Card (Identical to Screenshot 1) */}
+        {/* Dropdown Menu Card (Only Important, Non-Duplicate Items) */}
         {menuOpen && (
           <>
             <div 
@@ -169,20 +192,20 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
               role="menu"
               aria-label="Website Navigation Menu"
             >
-              {/* Item 1: About Us */}
+              {/* Item 1: Home */}
               <div 
-                className="chuk-menu-item" 
-                onClick={() => handleNavigate('#why-rdv')}
+                className={`chuk-menu-item ${currentPage === 'home' ? 'is-active-item' : ''}`} 
+                onClick={() => handlePageNavigation('home')}
                 role="menuitem"
                 tabIndex={0}
               >
-                <span className="chuk-menu-label">About Us</span>
+                <span className="chuk-menu-label">Home</span>
               </div>
 
               {/* Item 2: Products ▾ */}
               <div className="chuk-menu-item-group">
                 <div 
-                  className={`chuk-menu-item has-dropdown ${expandedGroup === 'products' ? 'is-expanded' : ''}`}
+                  className={`chuk-menu-item has-dropdown ${currentPage === 'products' ? 'is-active-item' : ''} ${expandedGroup === 'products' ? 'is-expanded' : ''}`}
                   onClick={() => toggleGroup('products')}
                   role="menuitem"
                   tabIndex={0}
@@ -195,7 +218,7 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
                 {expandedGroup === 'products' && (
                   <div className="chuk-submenu">
                     <div className="chuk-submenu-item" onClick={() => handleCategorySelect('all')}>
-                      All Products
+                      <strong>All Products (Full Catalog)</strong>
                     </div>
                     <div className="chuk-submenu-item" onClick={() => handleCategorySelect('bagasse')}>
                       100% Bagasse Plates & Thalis
@@ -222,97 +245,51 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
                 )}
               </div>
 
-              {/* Item 3: Buyers */}
+              {/* Item 3: Custom OEM Solutions */}
               <div 
-                className="chuk-menu-item" 
-                onClick={() => handleNavigate('#sectors')}
+                className={`chuk-menu-item ${currentPage === 'custom-solutions' ? 'is-active-item' : ''}`} 
+                onClick={() => handlePageNavigation('custom-solutions')}
                 role="menuitem"
                 tabIndex={0}
               >
-                <span className="chuk-menu-label">Buyers</span>
+                <span className="chuk-menu-label">Custom OEM Solutions</span>
               </div>
 
-              {/* Item 4: News & Events ▾ */}
-              <div className="chuk-menu-item-group">
-                <div 
-                  className={`chuk-menu-item has-dropdown ${expandedGroup === 'news' ? 'is-expanded' : ''}`}
-                  onClick={() => toggleGroup('news')}
-                  role="menuitem"
-                  tabIndex={0}
-                >
-                  <span className="chuk-menu-label">News & Events</span>
-                  <svg className={`chuk-caret ${expandedGroup === 'news' ? 'rotated' : ''}`} width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M7 10l5 5 5-5z"/>
-                  </svg>
-                </div>
-                {expandedGroup === 'news' && (
-                  <div className="chuk-submenu">
-                    <div className="chuk-submenu-item" onClick={() => handleNavigate('#showroom')}>
-                      Central India Food & Hotel Expo
-                    </div>
-                    <div className="chuk-submenu-item" onClick={() => handleNavigate('#benefits')}>
-                      CPCB Plastic Ban Guidelines
-                    </div>
-                    <div className="chuk-submenu-item" onClick={() => handleNavigate('#why-rdv')}>
-                      Zero-Plastic Hospitality Summits
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Item 5: Distributors */}
+              {/* Item 4: Sustainability & Science */}
               <div 
-                className="chuk-menu-item" 
-                onClick={() => handleNavigate('#inquiry')}
+                className={`chuk-menu-item ${currentPage === 'sustainability' ? 'is-active-item' : ''}`} 
+                onClick={() => handlePageNavigation('sustainability')}
                 role="menuitem"
                 tabIndex={0}
               >
-                <span className="chuk-menu-label">Distributors</span>
+                <span className="chuk-menu-label">Sustainability & Science</span>
               </div>
 
-              {/* Item 6: Blog & Media ▾ */}
-              <div className="chuk-menu-item-group">
-                <div 
-                  className={`chuk-menu-item has-dropdown ${expandedGroup === 'blog' ? 'is-expanded' : ''}`}
-                  onClick={() => toggleGroup('blog')}
-                  role="menuitem"
-                  tabIndex={0}
-                >
-                  <span className="chuk-menu-label">Blog & Media</span>
-                  <svg className={`chuk-caret ${expandedGroup === 'blog' ? 'rotated' : ''}`} width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M7 10l5 5 5-5z"/>
-                  </svg>
-                </div>
-                {expandedGroup === 'blog' && (
-                  <div className="chuk-submenu">
-                    <div className="chuk-submenu-item" onClick={() => handleNavigate('#smart-design')}>
-                      Bagasse vs Plastic Tableware Guide
-                    </div>
-                    <div className="chuk-submenu-item" onClick={() => handleNavigate('#benefits')}>
-                      Commercial Cloud Kitchen Packaging
-                    </div>
-                    <div className="chuk-submenu-item" onClick={() => handleNavigate('#showroom')}>
-                      Showroom Gallery & Media Kit
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Item 7: Impact Calculator */}
+              {/* Item 5: About Us & Showroom */}
               <div 
-                className="chuk-menu-item" 
-                onClick={() => handleNavigate('#impact')}
+                className={`chuk-menu-item ${currentPage === 'about' ? 'is-active-item' : ''}`} 
+                onClick={() => handlePageNavigation('about')}
                 role="menuitem"
                 tabIndex={0}
               >
-                <span className="chuk-menu-label">Impact Calculator</span>
+                <span className="chuk-menu-label">About Us & Showroom</span>
+              </div>
+
+              {/* Item 6: Contact & Wholesale Desk */}
+              <div 
+                className={`chuk-menu-item ${currentPage === 'contact' ? 'is-active-item' : ''}`} 
+                onClick={() => handlePageNavigation('contact')}
+                role="menuitem"
+                tabIndex={0}
+              >
+                <span className="chuk-menu-label">Contact & Wholesale Desk</span>
               </div>
 
               {/* Menu Quick Action Bar */}
               <div className="chuk-menu-footer">
                 {onOpenSampleKit && (
-                  <button
-                    type="button"
+                  <button 
+                    type="button" 
                     className="chuk-menu-action-btn btn-sample"
                     onClick={() => {
                       setMenuOpen(false);
@@ -323,10 +300,10 @@ export default function Navbar({ onOpenSampleKit, onSelectCategory }) {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                   </button>
                 )}
-                <a
-                  href="https://vyaparapp.in/store/smitadisposableandplastics"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a 
+                  href="https://vyaparapp.in/store/smitadisposableandplastics" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="chuk-menu-action-btn btn-store"
                   onClick={() => setMenuOpen(false)}
                 >

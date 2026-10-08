@@ -7,7 +7,9 @@ import SmartDesignSlider from './components/SmartDesignSlider';
 import CoralWaveSection from './components/CoralWaveSection';
 import CaterStrip from './components/CaterStrip';
 import ProductCatalog from './components/ProductCatalog';
+import CertificationsShowcase from './components/CertificationsShowcase';
 import PillarsSection from './components/PillarsSection';
+import TestimonialsSection from './components/TestimonialsSection';
 import ImpactCalculator from './components/ImpactCalculator';
 import ShowroomGallery from './components/ShowroomGallery';
 import InquiryForm from './components/InquiryForm';
@@ -15,18 +17,20 @@ import LocationMap from './components/LocationMap';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import SampleKitModal from './components/SampleKitModal';
+import CustomBrandingShowcase from './components/CustomBrandingShowcase';
 
 // Dedicated New Pages
 import ProductsPage from './pages/ProductsPage';
 import SustainabilityPage from './pages/SustainabilityPage';
 import CustomSolutionsPage from './pages/CustomSolutionsPage';
 import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
 export default function App() {
-  // Page routing: 'home' | 'products' | 'sustainability' | 'custom-solutions' | 'about'
+  // Page routing: 'home' | 'products' | 'sustainability' | 'custom-solutions' | 'about' | 'contact'
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash.replace(/^#\/?/, '');
-    if (['products', 'sustainability', 'custom-solutions', 'about'].includes(hash)) {
+    if (['products', 'sustainability', 'custom-solutions', 'about', 'contact'].includes(hash)) {
       return hash;
     }
     return 'home';
@@ -41,9 +45,9 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace(/^#\/?/, '');
-      if (['products', 'sustainability', 'custom-solutions', 'about'].includes(hash)) {
+      if (['products', 'sustainability', 'custom-solutions', 'about', 'contact'].includes(hash)) {
         setCurrentPage(hash);
-      } else if (!hash || hash === 'home' || hash === 'inquiry' || hash === 'why-rdv' || hash === 'sectors') {
+      } else if (!hash || hash === 'home' || hash === 'inquiry' || hash === 'why-rdv' || hash === 'sectors' || hash === 'testimonials' || hash === 'certifications') {
         setCurrentPage('home');
       }
     };
@@ -52,10 +56,19 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateToPage = (pageId) => {
+  const navigateToPage = (pageId, sectionAnchor = null) => {
     setCurrentPage(pageId);
-    window.location.hash = pageId === 'home' ? '' : `#/${pageId}`;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.hash = pageId === 'home' ? (sectionAnchor || '') : `#/${pageId}`;
+    if (sectionAnchor) {
+      setTimeout(() => {
+        const el = document.querySelector(sectionAnchor);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleSelectProductForQuote = (productName) => {
@@ -89,12 +102,12 @@ export default function App() {
         forceShow={preloaderTrigger > 0} 
       />
 
-      {/* Global Navigation Bar */}
+      {/* Global Navigation Bar (Exact Previous Visual Version + Page Routing) */}
       <Navbar 
-        currentPage={currentPage}
         onNavigatePage={navigateToPage}
         onOpenSampleKit={() => setIsSampleKitOpen(true)} 
         onSelectCategory={handleSelectCategory}
+        currentPage={currentPage}
       />
 
       <main className="main-content-area">
@@ -111,12 +124,26 @@ export default function App() {
             />
             <CoralWaveSection />
             <CaterStrip />
+            {/* Minimal Curated Featured Products + CTA to Dedicated Products Page */}
             <ProductCatalog 
               onSelectProductForQuote={handleSelectProductForQuote}
               externalCategory={activeCategory}
               onCategoryChange={setActiveCategory}
+              onViewAllProducts={() => navigateToPage('products')}
+            />
+            {/* 🔥 Trending Highlight: Custom Branded Packaging & Private-Label OEM Showcase */}
+            <CustomBrandingShowcase 
+              onSelectProductForQuote={handleSelectProductForQuote}
+              onOpenSampleKit={() => setIsSampleKitOpen(true)}
+              onNavigateCustomPage={() => navigateToPage('custom-solutions')}
+            />
+            {/* Dedicated Certifications & Regulatory Lab Standards Showcase */}
+            <CertificationsShowcase 
+              onOpenSampleKit={() => setIsSampleKitOpen(true)} 
             />
             <PillarsSection />
+            {/* Verified Hoteliers & Caterers Testimonials Section */}
+            <TestimonialsSection />
             <ImpactCalculator />
             <ShowroomGallery />
             <InquiryForm prefilledProduct={prefilledProduct} />
@@ -141,10 +168,7 @@ export default function App() {
             <SustainabilityPage 
               onOpenSampleKit={() => setIsSampleKitOpen(true)}
               onNavigateInquiry={() => {
-                navigateToPage('home');
-                setTimeout(() => {
-                  document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' });
-                }, 150);
+                navigateToPage('home', '#inquiry');
               }}
             />
           </div>
@@ -166,21 +190,28 @@ export default function App() {
             <AboutPage 
               onOpenSampleKit={() => setIsSampleKitOpen(true)}
               onNavigateInquiry={() => {
-                navigateToPage('home');
-                setTimeout(() => {
-                  document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' });
-                }, 150);
+                navigateToPage('home', '#inquiry');
               }}
+            />
+          </div>
+        )}
+
+        {/* Page View 6: Dedicated Contact & Wholesale Desk Page */}
+        {currentPage === 'contact' && (
+          <div className="page-view-wrapper fade-in-page">
+            <ContactPage 
+              onOpenSampleKit={() => setIsSampleKitOpen(true)}
             />
           </div>
         )}
       </main>
 
-      {/* Global Footer */}
+      {/* Global Useful Footer */}
       <Footer 
         onNavigatePage={navigateToPage}
         onSelectCategory={handleSelectCategory}
         onReplayPreloader={handleReplayPreloader}
+        onOpenSampleKit={() => setIsSampleKitOpen(true)}
       />
 
       {/* Persistent Floating Quick Action Bar */}
