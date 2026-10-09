@@ -414,11 +414,88 @@
 }
 
 .page-hero-banner {
-  background: linear-gradient(135deg, #1C1714 0%, #2A1F1B 50%, #15110E 100%);
+  background-color: #14110F;
   color: #FFFFFF;
   padding: 130px 0 60px;
   position: relative;
   overflow: hidden;
+}
+
+/* Ambient Display Image Layer with Gentle Soft Focus (Active on all inner pages, NOT on home) */
+.page-hero-bg-blur {
+  position: absolute;
+  inset: -18px; /* Clean edge bleed for 7px soft focus */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(7px) brightness(0.88) saturate(1.2);
+  transform: scale(1.04);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 1. Sustainability: Tropical monstera greenery & sugarcane tableware display */
+.sustainability-hero-banner .page-hero-bg-blur {
+  background-image: url('../assets/rdv-hero-banner.jpg');
+  background-position: center 30%;
+  filter: blur(7px) brightness(0.85) saturate(1.25);
+}
+
+.sustainability-hero-banner .page-hero-overlay {
+  background: linear-gradient(90deg, rgba(10, 30, 16, 0.85) 0%, rgba(14, 38, 22, 0.62) 55%, rgba(10, 24, 14, 0.40) 100%);
+}
+
+/* 2. Contact Desk: Commercial tableware dining setup with warm hospitality tones */
+.contact-hero-banner .page-hero-bg-blur {
+  background-image: url('../assets/rdv-hero-banner.jpg');
+  background-position: center 45%;
+  filter: blur(7px) brightness(0.88) saturate(1.2);
+}
+
+.contact-hero-banner .page-hero-overlay {
+  background: linear-gradient(90deg, rgba(22, 14, 10, 0.84) 0%, rgba(36, 20, 15, 0.58) 55%, rgba(18, 12, 10, 0.36) 100%);
+}
+
+/* 3. Products Catalog: Commercial tableware, biryani bowls & meal boxes display */
+.products-hero-banner .page-hero-bg-blur {
+  background-image: url('../assets/rdv-spillproof-bowls.jpg');
+  background-position: center 35%;
+  filter: blur(7px) brightness(0.88) saturate(1.25);
+}
+
+.products-hero-banner .page-hero-overlay {
+  background: linear-gradient(90deg, rgba(22, 15, 12, 0.84) 0%, rgba(36, 22, 16, 0.56) 55%, rgba(18, 12, 10, 0.35) 100%);
+}
+
+/* 4. About Us: Natural sugarcane tableware stack on limestone with eucalyptus */
+.about-hero-banner .page-hero-bg-blur {
+  background-image: url('../assets/rdv-tableware-stack.jpg');
+  background-position: center 40%;
+  filter: blur(7px) brightness(0.86) saturate(1.15);
+}
+
+.about-hero-banner .page-hero-overlay {
+  background: linear-gradient(90deg, rgba(22, 17, 14, 0.84) 0%, rgba(34, 25, 20, 0.58) 55%, rgba(16, 12, 10, 0.36) 100%);
+}
+
+/* 5. Custom OEM Solutions: Custom-branded kraft delivery packaging, cup & tableware */
+.custom-solutions-hero-banner .page-hero-bg-blur {
+  background-image: url('../assets/rdv-restaurant-hero.jpg');
+  background-position: center 35%;
+  filter: blur(7px) brightness(0.88) saturate(1.2);
+}
+
+.custom-solutions-hero-banner .page-hero-overlay {
+  background: linear-gradient(90deg, rgba(24, 15, 12, 0.84) 0%, rgba(38, 22, 16, 0.58) 55%, rgba(18, 12, 10, 0.36) 100%);
+}
+
+/* Directional Overlay: Darker on the left for text readability, clearer on the right for image visibility */
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 14, 11, 0.84) 0%, rgba(32, 20, 15, 0.58) 55%, rgba(16, 12, 10, 0.36) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .page-hero-banner::before {
@@ -426,17 +503,18 @@
   position: absolute;
   top: -50px;
   right: -50px;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(240, 101, 84, 0.22) 0%, transparent 70%);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(240, 101, 84, 0.28) 0%, rgba(251, 169, 25, 0.12) 40%, transparent 70%);
   border-radius: 50%;
+  z-index: 2;
   pointer-events: none;
 }
 
 .page-hero-content {
   max-width: 860px;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .page-eyebrow {
@@ -455,14 +533,16 @@
   font-weight: 900;
   line-height: 1.15;
   margin-bottom: 18px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
 }
 
 .page-hero-subtitle {
   font-size: 1.12rem;
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(255, 255, 255, 0.92);
   line-height: 1.6;
   margin-bottom: 28px;
   max-width: 760px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 .page-hero-stats-row {
@@ -1205,6 +1285,8 @@
    -------------------------------------------------------------------------- */
 .sustainability-hero-banner {
   background: linear-gradient(135deg, #102A18 0%, #1A3E26 50%, #0E1D13 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .sustainability-hero-stats {
@@ -2784,7 +2866,7 @@
 }
 
 .contact-hero-banner {
-  background: linear-gradient(135deg, #1C1714 0%, #2A1F1B 50%, #15110E 100%);
+  background-color: #14110F;
   position: relative;
   overflow: hidden;
 }
@@ -2796,8 +2878,9 @@
   right: 10%;
   width: 380px;
   height: 380px;
-  background: radial-gradient(circle, rgba(251, 169, 25, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(251, 169, 25, 0.22) 0%, transparent 70%);
   border-radius: 50%;
+  z-index: 2;
   pointer-events: none;
 }
 

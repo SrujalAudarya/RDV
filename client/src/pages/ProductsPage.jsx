@@ -152,7 +152,9 @@ export default function ProductsPage({
   return (
     <div className="page-container products-page-view">
       {/* Page Hero Section */}
-      <section className="page-hero-banner">
+      <section className="page-hero-banner products-hero-banner">
+        <div className="page-hero-bg-blur" aria-hidden="true" />
+        <div className="page-hero-overlay" aria-hidden="true" />
         <div className="container">
           <div className="page-hero-content">
             <span className="page-eyebrow">B2B Master Catalog & Wholesale Distribution</span>

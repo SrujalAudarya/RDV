@@ -233,6 +233,8 @@ export default function CustomSolutionsPage({ onSelectProductForQuote, onOpenSam
     <div className="page-container custom-solutions-page-view">
       {/* Hero Banner */}
       <section className="page-hero-banner custom-solutions-hero-banner">
+        <div className="page-hero-bg-blur" aria-hidden="true" />
+        <div className="page-hero-overlay" aria-hidden="true" />
         <div className="container">
           <div className="page-hero-content">
             <span className="page-eyebrow">🔥 Trending #1 Service • B2B OEM & Private Label</span>

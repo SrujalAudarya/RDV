@@ -86,6 +86,8 @@ export default function SustainabilityPage({ onOpenSampleKit, onNavigateInquiry 
     <div className="page-container sustainability-page-view">
       {/* Hero Banner */}
       <section className="page-hero-banner sustainability-hero-banner">
+        <div className="page-hero-bg-blur" aria-hidden="true" />
+        <div className="page-hero-overlay" aria-hidden="true" />
         <div className="container">
           <div className="page-hero-content">
             <span className="page-eyebrow">Zero Plastic • Zero Landfill • 100% Earth</span>

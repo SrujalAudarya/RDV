@@ -26,6 +26,8 @@ export default function ContactPage({ onOpenSampleKit }) {
     <div className="page-container contact-page-view">
       {/* Page Hero Banner */}
       <section className="page-hero-banner contact-hero-banner">
+        <div className="page-hero-bg-blur" aria-hidden="true" />
+        <div className="page-hero-overlay" aria-hidden="true" />
         <div className="container">
           <div className="page-hero-content">
             <span className="page-eyebrow">Central India Wholesale Support & Distribution</span>

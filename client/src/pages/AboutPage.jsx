@@ -37,6 +37,8 @@ export default function AboutPage({ onOpenSampleKit, onNavigateInquiry }) {
     <div className="page-container about-page-view">
       {/* Page Hero Banner */}
       <section className="page-hero-banner about-hero-banner">
+        <div className="page-hero-bg-blur" aria-hidden="true" />
+        <div className="page-hero-overlay" aria-hidden="true" />
         <div className="container">
           <div className="page-hero-content">
             <span className="page-eyebrow">Our Mission & Heritage</span>
