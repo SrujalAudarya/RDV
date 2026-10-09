@@ -76,6 +76,57 @@ html {
   font-size: 16px;
 }
 
+/* ==========================================================================
+   Custom Theme Scrollbar (RDV Brand Signature)
+   Matches Warm Bagasse Cream Background & Coral Accent (#F06554 / #FAF7F2)
+   ========================================================================== */
+
+/* 1. Firefox Standard CSS Support */
+@supports (-moz-appearance: none) {
+  html, * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--coral-primary) var(--bg-cream);
+  }
+}
+
+/* 2. WebKit / Blink Browsers (Chrome, Edge, Safari, Brave, Opera) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+  border-left: 1px solid var(--border-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--coral-primary) 0%, var(--coral-light) 100%);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--bg-cream);
+  background-clip: padding-box;
+  transition: background var(--transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--coral-dark) 0%, var(--coral-primary) 100%);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--coral-dark);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-cream);
+}
+
+
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-cream);
