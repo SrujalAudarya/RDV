@@ -131,7 +131,9 @@ export default function App() {
               onCategoryChange={setActiveCategory}
               onViewAllProducts={() => navigateToPage('products')}
             />
-            {/* 🔥 Trending Highlight: Custom Branded Packaging & Private-Label OEM Showcase */}
+            {/* 4 Pillars Of Operational Excellence (Wholesale, Logistics, Eco-Standards, Custom Brand Printing) */}
+            <PillarsSection />
+            {/* 🔥 Custom-Branded Packaging & Private-Label Tableware Showcase */}
             <CustomBrandingShowcase 
               onSelectProductForQuote={handleSelectProductForQuote}
               onOpenSampleKit={() => setIsSampleKitOpen(true)}
@@ -141,7 +143,6 @@ export default function App() {
             <CertificationsShowcase 
               onOpenSampleKit={() => setIsSampleKitOpen(true)} 
             />
-            <PillarsSection />
             {/* Verified Hoteliers & Caterers Testimonials Section */}
             <TestimonialsSection />
             <ImpactCalculator />
